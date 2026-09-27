@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Reelora is a curated movie discovery experience. Find your next favourite film."
+    />
+    <title>Reelora — Find your next favourite film</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-glow glow-one"></div>
+    <div class="page-glow glow-two"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Reelora home">
+        <span class="brand-mark">R</span>
+        <span>reelora</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="active" href="#discover">Discover</a>
+        <a href="#watchlist">My List <span id="watchlistCount">0</span></a>
+      </nav>
+
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to light mode" title="Toggle theme">
+        <span class="sun-icon" aria-hidden="true">☼</span>
+        <span class="moon-icon" aria-hidden="true">☾</span>
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> CURATED STORIES, NO ENDLESS SCROLLING</p>
+          <h1 id="heroTitle">Make tonight<br /><em>worth watching.</em></h1>
+          <p class="hero-text">
+            A hand-picked collection of films that stay with you long after the credits roll.
+          </p>
+          <a class="primary-button" href="#discover">Explore the collection <span aria-hidden="true">↘</span></a>
+        </div>
+
+        <article class="spotlight-card" aria-label="Spotlight film, Dune Part Two">
+          <img src="https://image.tmdb.org/t/p/w780/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg" alt="Dune: Part Two poster" />
+          <div class="spotlight-shade"></div>
+          <div class="spotlight-content">
+            <p class="spotlight-label">THIS WEEK'S SPOTLIGHT</p>
+            <h2>Dune: Part Two</h2>
+            <div class="spotlight-meta"><span>2024</span><i></i><span>2h 46m</span><i></i><span class="rating">★ 8.5</span></div>
+            <button class="text-button open-movie" type="button" data-id="dune">View details <span>→</span></button>
+          </div>
+        </article>
+      </section>
+
+      <section class="discover-section" id="discover" aria-labelledby="discoverTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span></span> THE EDIT</p>
+            <h2 id="discoverTitle">Find your next <em>obsession.</em></h2>
+          </div>
+          <p class="movie-count" id="movieCount" aria-live="polite"></p>
+        </div>
+
+        <div class="controls" aria-label="Movie controls">
+          <label class="search-box" for="searchInput">
+            <span aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search" placeholder="Search a title..." autocomplete="off" />
+            <kbd>⌘ K</kbd>
+          </label>
+          <div class="filter-wrap">
+            <label class="sr-only" for="genreFilter">Filter by genre</label>
+            <select id="genreFilter">
+              <option value="all">All genres</option>
+            </select>
+          </div>
+          <div class="filter-wrap">
+            <label class="sr-only" for="sortSelect">Sort movies</label>
+            <select id="sortSelect">
+              <option value="featured">Sort: Featured</option>
+              <option value="rating-high">Rating: High to low</option>
+              <option value="rating-low">Rating: Low to high</option>
+              <option value="title">Title: A–Z</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="genreChips" class="genre-chips" aria-label="Quick genre filters"></div>
+        <div id="movieGrid" class="movie-grid" aria-live="polite"></div>
+        <div id="emptyState" class="empty-state" hidden>
+          <span>⌕</span>
+          <h3>Nothing found</h3>
+          <p>Try a different title or clear your filters.</p>
+          <button id="clearFilters" type="button">Clear filters</button>
+        </div>
+      </section>
+
+      <section class="watchlist-section" id="watchlist" aria-labelledby="watchlistTitle">
+        <div class="watchlist-intro">
+          <p class="eyebrow"><span></span> YOUR QUEUE</p>
+          <h2 id="watchlistTitle">Saved for <em>later.</em></h2>
+          <p id="watchlistDescription">Your watchlist is empty. Tap the bookmark on a film to save it here.</p>
+        </div>
+        <div id="watchlistGrid" class="watchlist-grid"></div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand" href="#top"><span class="brand-mark">R</span><span>reelora</span></a>
+      <p>Made for people who still read the credits.</p>
+      <a href="#top" class="back-to-top">Back to top ↑</a>
+    </footer>
+
+    <dialog id="movieModal" class="movie-modal" aria-labelledby="modalTitle">
+      <button id="closeModal" class="close-modal" type="button" aria-label="Close details">×</button>
+      <div id="modalContent"></div>
+    </dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
